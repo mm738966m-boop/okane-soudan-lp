@@ -325,6 +325,41 @@
         <p class="g-note">※ 実際のシミュレーション例をもとにした図です。給与・教育費・住宅・保険・年金などから精密に算出します。</p>
       </div>
 
+      <div class="graph-card" style="margin-top:16px;">
+        <div class="gt">⚠️ しかも、これは物価が"年1%"の前提です。</div>
+        <div class="gs">2020年以降、物価は2〜3%で上がり続けています。<br>もし物価が上がったら、資産が尽きる年齢は——</div>
+        <svg viewBox="0 0 520 300" width="100%" role="img" aria-label="物価上昇率別の資産寿命">
+          <line x1="52" y1="28" x2="52" y2="235" stroke="#e5e7eb" stroke-width="1.5"/>
+          <line x1="52" y1="150" x2="505" y2="150" stroke="#d1d5db" stroke-width="1.4"/>
+          <text x="46" y="154" text-anchor="end" font-size="10.5" fill="#9ca3af">0</text>
+          <!-- 共通の立ち上がり→60歳ピーク、以降3本に分岐 -->
+          <!-- 3%（rose・75歳でゼロ） -->
+          <path d="M52,130 C130,105 200,70 250,55 C295,85 320,132 330,150 C370,180 440,200 505,210" fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
+          <!-- 2%（amber・83歳でゼロ） -->
+          <path d="M52,130 C130,105 200,70 250,55 C300,78 365,128 395,150 C430,168 470,182 505,192" fill="none" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+          <!-- 1%（teal・91歳でゼロ） -->
+          <path d="M52,130 C130,105 200,70 250,55 C315,72 405,122 460,150 C475,158 490,164 505,170" fill="none" stroke="#0d9488" stroke-width="3.4" stroke-linecap="round"/>
+          <!-- ピーク -->
+          <circle cx="250" cy="55" r="4.5" fill="#0f766e"/>
+          <text x="250" y="45" text-anchor="middle" font-size="10.5" fill="#0f766e" font-weight="800">60歳ピーク</text>
+          <!-- ゼロ交差マーカー -->
+          <circle cx="330" cy="150" r="5.5" fill="#e11d48"/>
+          <circle cx="395" cy="150" r="5.5" fill="#d97706"/>
+          <circle cx="460" cy="150" r="5.5" fill="#0d9488"/>
+          <text x="330" y="172" text-anchor="middle" font-size="11.5" fill="#e11d48" font-weight="800">75歳</text>
+          <text x="395" y="172" text-anchor="middle" font-size="11.5" fill="#b45309" font-weight="800">83歳</text>
+          <text x="460" y="172" text-anchor="middle" font-size="11.5" fill="#0f766e" font-weight="800">91歳</text>
+          <text x="52" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">40歳</text>
+          <text x="505" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">100歳</text>
+        </svg>
+        <div class="g-legend">
+          <span><i class="dot" style="background:#0d9488;"></i>物価1%（当初想定）→ 91歳</span>
+          <span><i class="dot" style="background:#d97706;"></i>物価2% → 83歳</span>
+          <span><i class="dot" style="background:#e11d48;"></i>物価3% → 75歳</span>
+        </div>
+        <p class="g-note" style="color:#b91c1c;font-weight:700;">物価が上がるほど、"その日"は早くやってきます。<br><span style="color:#9ca3af;font-weight:400;">※ 上昇率別の推計イメージ図です。</span></p>
+      </div>
+
       <p class="bridge-line">——これ全部、<br><span class="hl" style="color:#7dd3c1;">たった1回のシミュレーション</span>で見えたことです。<br><span class="sm">給与も、教育費も、住宅も、保険も、年金も、老後の物価も。<br>ぜんぶ数字にして、初めて"本当のこと"が見えました。<br>無料の相談では、ここまで教えてくれません。</span></p>
 
       <p class="punch">でも、これは絶望の話じゃない。<br><span class="hl">"見えた"なら、まだ間に合う。</span><br>それが、この数字が教えてくれたことでした。</p>
