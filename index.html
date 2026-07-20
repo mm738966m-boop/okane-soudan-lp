@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>【ご意見募集】新しいお金の相談サービスを準備中です</title>
+<style>
+  :root{
+    --teal:#0d9488; --teal-d:#0f766e; --teal-l:#5eead4; --teal-bg:#f0fdfa;
+    --ink:#1f2937; --ink-sub:#4b5563; --line:#e5e7eb; --white:#ffffff;
+    --amber:#b45309; --amber-bg:#fffbeb; --rose:#e11d48; --rose-bg:#fff1f2;
+    --shadow:0 10px 30px rgba(13,148,136,.10);
+    --shadow-img:0 16px 40px rgba(15,23,42,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,-apple-system,sans-serif;
+    color:var(--ink);background:var(--white);line-height:1.95;font-size:16px;letter-spacing:.02em;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:600px;margin:0 auto;padding:0 20px;}
+  img{max-width:100%;display:block;}
+  section{position:relative;}
+
+  /* ===== FV ===== */
+  .fv{position:relative;color:#fff;overflow:hidden;min-height:92vh;display:flex;align-items:flex-end;}
+  .fv-bg{position:absolute;inset:0;z-index:0;}
+  .fv-bg img{width:100%;height:100%;object-fit:cover;object-position:center 62%;}
+  .fv-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(6,60,55,.55) 0%,rgba(13,118,110,.72) 55%,rgba(11,80,73,.96) 100%);}
+  .fv .wrap{position:relative;z-index:1;padding-top:40px;padding-bottom:44px;width:100%;}
+  .badge{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);
+    color:#fff;font-size:13px;font-weight:700;padding:7px 15px;border-radius:999px;letter-spacing:.08em;margin-bottom:22px;backdrop-filter:blur(4px);}
+  .fv h1{font-size:29px;font-weight:900;line-height:1.55;letter-spacing:.01em;margin-bottom:22px;text-shadow:0 2px 20px rgba(0,0,0,.25);}
+  .fv h1 .mark{color:#a7f3e0;}
+  .fv .lead{font-size:16px;line-height:2;color:rgba(255,255,255,.96);text-shadow:0 1px 12px rgba(0,0,0,.3);}
+  .fv .lead strong{color:#fff;font-weight:800;}
+  .gift-hint{margin-top:24px;background:rgba(255,255,255,.14);border:1px dashed rgba(255,255,255,.55);
+    border-radius:14px;padding:14px 16px;font-size:14px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(4px);}
+  .gift-hint .em{font-size:22px;}
+  .scroll-cue{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:11px;letter-spacing:.15em;animation:bob 1.8s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,6px);}}
+
+  /* ===== section base ===== */
+  .sec{padding:56px 0;}
+  .kicker{font-size:12.5px;font-weight:800;color:var(--teal);letter-spacing:.14em;margin-bottom:12px;}
+  .sec h2{font-size:23px;font-weight:900;line-height:1.7;margin-bottom:18px;}
+  .sec h2 em{font-style:normal;color:var(--teal-d);}
+
+  /* ===== empathy ===== */
+  .empathy .photo-card{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-img);margin-bottom:28px;aspect-ratio:3/2;background:#e2e8f0;}
+  .empathy .photo-card img{width:100%;height:100%;object-fit:cover;}
+  .empathy h2{font-size:24px;}
+  .empathy p{color:var(--ink-sub);font-size:15.5px;}
+
+  /* ===== reality (real data) ===== */
+  .reality{background:linear-gradient(180deg,#0f766e 0%,#0b504a 100%);color:#fff;}
+  .reality .kicker{color:var(--teal-l);}
+  .reality h2{color:#fff;}
+  .reality .intro-p{color:rgba(255,255,255,.92);font-size:15.5px;margin-bottom:8px;}
+  .reality .intro-p.big{font-size:17px;font-weight:800;color:#fff;margin:18px 0 26px;line-height:1.8;}
+  .stat-grid{display:flex;flex-direction:column;gap:14px;margin:24px 0 30px;}
+  .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:20px 20px;position:relative;overflow:hidden;}
+  .stat .lb{font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:6px;}
+  .stat .num{font-size:34px;font-weight:900;line-height:1.15;letter-spacing:.01em;}
+  .stat .num small{font-size:17px;font-weight:800;}
+  .stat .cap{font-size:13px;color:rgba(255,255,255,.82);margin-top:8px;line-height:1.7;}
+  .stat.rose{border-color:rgba(251,113,133,.5);} .stat.rose .num{color:#fda4af;}
+  .stat.amber .num{color:#fcd34d;}
+  .stat.teal .num{color:#7dd3c1;}
+  .stat .view{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);display:flex;gap:9px;align-items:flex-start;}
+  .stat .view .v-ic{font-size:16px;flex:0 0 auto;margin-top:1px;}
+  .stat .view .v-tx{font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.92);}
+  .stat .view .v-tx b{display:block;font-size:11.5px;font-weight:800;color:#7dd3c1;letter-spacing:.06em;margin-bottom:3px;}
+  .reality .bridge-line{font-size:16px;font-weight:800;line-height:1.85;color:#fff;text-align:center;margin:28px 0 6px;}
+  .reality .bridge-line .sm{display:block;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.8);margin-top:8px;}
+
+  .graph-card{background:#fff;border-radius:20px;padding:22px 18px 18px;box-shadow:0 12px 30px rgba(0,0,0,.2);color:var(--ink);}
+  .graph-card .gt{font-size:15.5px;font-weight:800;margin-bottom:2px;}
+  .graph-card .gs{font-size:12.5px;color:#9ca3af;margin-bottom:14px;}
+  .g-legend{display:flex;gap:16px;font-size:12px;font-weight:700;flex-wrap:wrap;margin-top:10px;}
+  .g-legend span{display:flex;align-items:center;gap:6px;color:var(--ink-sub);}
+  .g-legend .dot{width:11px;height:11px;border-radius:3px;}
+  .g-note{font-size:11.5px;color:#9ca3af;margin-top:10px;line-height:1.7;}
+  .reality .punch{font-size:19px;font-weight:900;text-align:center;line-height:1.8;margin-top:30px;}
+  .reality .punch .hl{color:#7dd3c1;}
+
+  /* ===== intro ===== */
+  .intro p{color:var(--ink-sub);font-size:15.5px;margin-bottom:18px;}
+  .intro .voice{background:var(--teal-bg);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;
+    padding:16px 18px;color:var(--teal-d);font-weight:600;margin:6px 0 22px;font-size:15px;}
+  .intro .sign{color:var(--teal-d);font-weight:800;font-size:16px;}
+  .intro .manifesto{background:var(--teal-bg);border-left:4px solid var(--teal);border-radius:0 16px 16px 0;padding:24px 22px;margin:10px 0 24px;}
+  .intro .manifesto p{margin-bottom:14px;color:var(--ink);font-size:15.5px;font-weight:600;line-height:1.9;}
+  .intro .manifesto p:last-child{margin-bottom:0;}
+  .intro .manifesto strong{color:var(--teal-d);font-weight:800;}
+  .intro .manifesto .big{font-size:18px;font-weight:900;color:var(--teal-d);line-height:1.75;}
+
+  /* ===== map (service) ===== */
+  .map{background:var(--teal-bg);}
+  .map .hearing{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 28px;}
+  .map .h-item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-align:left;}
+  .map .h-item .ic{flex:0 0 38px;height:38px;border-radius:10px;background:var(--teal-bg);display:flex;align-items:center;justify-content:center;}
+  .map .h-item .ic svg{width:21px;height:21px;stroke:var(--teal-d);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .map .h-item .tx{font-size:14px;font-weight:700;color:var(--ink);line-height:1.3;}
+  .map .arrow{text-align:center;font-size:22px;color:var(--teal);margin:6px 0 14px;}
+  .map .result-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .map .r-chip{background:var(--teal);color:#fff;border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:700;}
+  .map .map-note{text-align:center;font-size:14px;color:var(--ink-sub);margin-top:24px;line-height:1.85;}
+  .map .flow-label{text-align:center;font-size:15px;font-weight:800;color:var(--teal-d);margin:24px 0 14px;}
+  .map .flow-label span{display:block;font-size:12.5px;font-weight:600;color:var(--ink-sub);margin-top:4px;}
+  .doc-gallery{display:flex;flex-direction:column;gap:22px;margin:16px 0 22px;}
+  .doc-item .shot{border:1px solid var(--teal-l);border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(15,23,42,.15);aspect-ratio:16/10;background:#fff;}
+  .doc-item .shot img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+  .doc-item .d-cap{margin-top:12px;display:flex;gap:10px;align-items:flex-start;}
+  .doc-item .d-cap .no{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:var(--teal);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .doc-item .d-cap .t{font-size:15.5px;font-weight:800;color:var(--ink);}
+  .doc-item .d-cap .s{font-size:13px;color:var(--ink-sub);margin-top:2px;line-height:1.7;}
+  .map .volume{text-align:center;background:#fff;border:1.5px solid var(--teal);border-radius:18px;padding:22px;margin:8px 0 4px;box-shadow:var(--shadow);}
+  .map .volume .big{font-size:20px;font-weight:900;color:var(--teal-d);display:block;margin-bottom:4px;}
+  .map .volume .big em{font-style:normal;font-size:34px;vertical-align:-2px;}
+  .map .volume .sub{font-size:14px;color:var(--ink-sub);font-weight:600;}
+
+  /* ===== improve / accompany ===== */
+  .improve{background:#fff;}
+  .improve .part-label{text-align:center;font-size:16px;font-weight:900;color:var(--teal-d);margin:34px 0 16px;}
+  .improve .part-label span{display:block;font-size:13px;font-weight:600;color:var(--ink-sub);margin-top:5px;}
+  .improve .step-list{display:flex;flex-direction:column;gap:14px;margin:16px 0 26px;}
+  .improve .step{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(15,23,42,.05);}
+  .improve .step .n{flex:0 0 34px;height:34px;border-radius:10px;background:var(--teal);color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;}
+  .improve .step .t{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+  .improve .step .s{font-size:14px;color:var(--ink-sub);line-height:1.8;}
+  .improve .step .s b{color:var(--teal-d);}
+  .ba-card{background:var(--teal-bg);border:1.5px solid var(--teal-l);border-radius:20px;padding:22px 18px 18px;margin:8px 0 6px;}
+  .ba-card .bt{font-size:15.5px;font-weight:800;text-align:center;margin-bottom:2px;color:var(--ink);}
+  .ba-card .bs{font-size:12.5px;color:#9ca3af;text-align:center;margin-bottom:12px;}
+  .ba-legend{display:flex;gap:18px;justify-content:center;font-size:12.5px;font-weight:700;margin-top:12px;flex-wrap:wrap;}
+  .ba-legend span{display:flex;align-items:center;gap:6px;color:var(--ink-sub);}
+  .ba-legend .dot{width:12px;height:12px;border-radius:3px;}
+  .ba-note{font-size:11.5px;color:#9ca3af;text-align:center;margin-top:12px;line-height:1.7;}
+  .improve .mid-line{text-align:center;font-size:17px;font-weight:900;line-height:1.8;margin:24px 0 6px;color:var(--ink);}
+  .improve .mid-line .hl{color:var(--teal-d);}
+  .timeline{margin:20px 0 8px;}
+  .timeline .tl{position:relative;padding-left:34px;padding-bottom:24px;border-left:2px solid var(--teal-l);margin-left:12px;}
+  .timeline .tl:last-child{border-left-color:transparent;padding-bottom:4px;}
+  .timeline .tl .dot{position:absolute;left:-12px;top:-2px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px #fff,0 0 0 6px var(--teal-bg);}
+  .timeline .tl .tt{font-size:15px;font-weight:800;color:var(--teal-d);margin-bottom:3px;}
+  .timeline .tl .tsub{font-size:12px;font-weight:700;color:#9ca3af;margin-bottom:5px;letter-spacing:.04em;}
+  .timeline .tl .ts{font-size:14px;color:var(--ink-sub);line-height:1.8;}
+  .improve .close-line{text-align:center;font-size:18px;font-weight:900;line-height:1.85;margin-top:28px;color:var(--ink);}
+  .improve .close-line .hl{color:var(--teal-d);}
+
+  /* ===== gallery / trust ===== */
+  .trust .gal{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 24px;}
+  .trust .gal figure{border-radius:14px;overflow:hidden;box-shadow:0 8px 22px rgba(15,23,42,.12);aspect-ratio:4/3;background:#e2e8f0;}
+  .trust .gal figure.wide{grid-column:1 / -1;aspect-ratio:16/9;}
+  .trust .gal img{width:100%;height:100%;object-fit:cover;}
+  .trust .t-lead{font-size:15.5px;color:var(--ink-sub);text-align:center;line-height:1.9;}
+  .trust .t-lead strong{color:var(--teal-d);font-weight:800;}
+
+  /* ===== who (morikawa) ===== */
+  .who{background:#0b504a;color:#fff;}
+  .who .who-photo{width:100%;max-width:280px;margin:0 auto 24px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-img);aspect-ratio:1/1;background:#0f766e;}
+  .who .who-photo img{width:100%;height:100%;object-fit:cover;}
+  .who .nm{text-align:center;font-size:14px;font-weight:800;color:var(--teal-l);letter-spacing:.05em;margin-bottom:2px;}
+  .who .role{text-align:center;font-size:12.5px;color:rgba(255,255,255,.7);margin-bottom:22px;}
+  .who .msg{font-size:16.5px;font-weight:700;line-height:1.95;text-align:center;}
+  .who .msg .hl{color:#7dd3c1;}
+
+  /* ===== start CTA ===== */
+  .start-sec{padding:44px 0 8px;}
+  .cta-start{display:block;width:100%;background:var(--teal);color:#fff;border:none;font-family:inherit;
+    font-size:19px;font-weight:900;padding:22px;border-radius:16px;cursor:pointer;box-shadow:var(--shadow);
+    margin:6px 0 8px;transition:transform .15s ease,background .2s ease;letter-spacing:.04em;}
+  .cta-start:hover{background:var(--teal-d);transform:translateY(-2px);}
+  .cta-start .sub{display:block;font-size:12.5px;font-weight:600;opacity:.9;margin-top:5px;letter-spacing:.02em;}
+  .note{text-align:center;font-size:12.5px;color:#9ca3af;margin-bottom:40px;}
+
+  /* ===== quiz ===== */
+  .quiz{padding:44px 0 60px;display:none;}
+  .quiz.active{display:block;animation:fade .4s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .progress-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .progress-head .step{font-size:13px;font-weight:800;color:var(--teal-d);letter-spacing:.05em;}
+  .progress-head .pct{font-size:12px;color:#9ca3af;font-weight:600;}
+  .bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:26px;}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal-l),var(--teal));border-radius:999px;transition:width .45s ease;}
+  .bridge{font-size:14px;color:var(--teal-d);font-weight:700;margin-bottom:12px;}
+  .q-title{font-size:20px;font-weight:800;line-height:1.65;margin-bottom:6px;}
+  .q-sub{font-size:13.5px;color:#9ca3af;margin-bottom:22px;}
+  .opts{display:flex;flex-direction:column;gap:12px;}
+  .opt{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--line);border-radius:14px;
+    padding:16px 18px;cursor:pointer;font-size:15.5px;font-weight:600;color:var(--ink);text-align:left;transition:all .18s ease;font-family:inherit;width:100%;}
+  .opt .key{flex:0 0 28px;height:28px;border-radius:8px;background:var(--teal-bg);color:var(--teal-d);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .18s ease;}
+  .opt:hover{border-color:var(--teal-l);background:var(--teal-bg);transform:translateX(3px);}
+  .opt.sel{border-color:var(--teal);background:var(--teal-bg);box-shadow:0 4px 14px rgba(13,148,136,.14);}
+  .opt.sel .key{background:var(--teal);color:#fff;}
+  .back{background:none;border:none;color:#9ca3af;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-top:22px;padding:6px;}
+  .back:hover{color:var(--teal-d);}
+
+  /* ===== result ===== */
+  .result{padding:48px 0 60px;display:none;}
+  .result.active{display:block;animation:fade .5s ease;}
+  .result .thanks-em{font-size:46px;text-align:center;margin-bottom:8px;}
+  .result h2{font-size:24px;font-weight:900;text-align:center;line-height:1.6;margin-bottom:16px;}
+  .result .r-lead{text-align:center;color:var(--ink-sub);font-size:15px;margin-bottom:8px;line-height:1.95;}
+  .result .r-lead strong{color:var(--teal-d);}
+  .result .r-photo{border-radius:16px;overflow:hidden;box-shadow:var(--shadow-img);margin:22px 0 4px;aspect-ratio:16/9;}
+  .result .r-photo img{width:100%;height:100%;object-fit:cover;}
+  .gift-card{background:var(--teal-bg);border:1.5px solid var(--teal-l);border-radius:20px;padding:26px 22px;margin:22px 0 8px;}
+  .gift-card .gt{font-size:15px;font-weight:800;color:var(--teal-d);text-align:center;margin-bottom:18px;letter-spacing:.03em;}
+  .gift-card ul{list-style:none;display:flex;flex-direction:column;gap:13px;}
+  .gift-card li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.7;}
+  .gift-card li .ck{color:var(--teal);font-weight:900;flex:0 0 auto;margin-top:1px;}
+  .gift-card li.star{color:var(--teal-d);font-weight:800;}
+  .cta-line{display:block;width:100%;background:#06c755;color:#fff;border:none;font-family:inherit;font-size:19px;font-weight:900;
+    padding:22px;border-radius:16px;cursor:pointer;text-align:center;box-shadow:0 10px 26px rgba(6,199,85,.28);
+    margin:24px 0 10px;text-decoration:none;transition:transform .15s ease,filter .2s ease;letter-spacing:.04em;}
+  .cta-line:hover{filter:brightness(1.05);transform:translateY(-2px);}
+  .cta-line .li-ico{margin-right:8px;}
+  .promise{text-align:center;font-size:13px;color:#9ca3af;line-height:1.9;}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 40px;text-align:center;}
+  footer p{font-size:12px;color:#9ca3af;}
+
+  @media(max-width:420px){
+    .fv h1{font-size:25px;} .q-title{font-size:18.5px;} .empathy h2{font-size:21px;}
+    .sec h2{font-size:21px;} .stat .num{font-size:30px;} body{font-size:15px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== FV ===================== -->
+  <section class="fv">
+    <div class="fv-bg"><img src="images/hero-venue.jpg" alt="お金の勉強会の会場"></div>
+    <div class="wrap">
+      <span class="badge">ご意見募集</span>
+      <h1>新しいお金の相談サービスを準備中です。<br><span class="mark">5つだけ、あなたの感覚を聞かせてください。</span></h1>
+      <p class="lead">
+        「まじめにやってるのに不安が消えない」——<br>
+        最近、この声が本当に多いんです。<br>
+        だから今、<strong>新しいサービスを作っています。</strong><br>
+        完成前に、リアルな声を反映させたい。
+      </p>
+      <div class="gift-hint">
+        <span class="em">🎁</span>
+        <span>ご協力いただいた方には、<strong>ささやかなお礼</strong>をご用意しています。</span>
+      </div>
+    </div>
+    <div class="scroll-cue">SCROLL ▾</div>
+  </section>
+
+  <!-- ===================== EMPATHY ===================== -->
+  <section class="sec empathy">
+    <div class="wrap">
+      <div class="photo-card">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=70" alt="お金と向き合う様子">
+      </div>
+      <div class="kicker">あなたのことかもしれません</div>
+      <h2>毎月、まじめに働いている。<br>貯金だって、している。<br><em>——なのに、不安が消えない。</em></h2>
+      <p>その正体は、"お金が足りないこと"ではありません。<br>「全部つなげた1枚の地図」を、まだ見たことがないだけです。<br>そして、その地図は——ときに、残酷なほど正直です。</p>
+    </div>
+  </section>
+
+  <!-- ===================== REALITY (real data) ===================== -->
+  <section class="sec reality">
+    <div class="wrap">
+      <div class="kicker">不安を、煽りたいわけじゃありません</div>
+      <h2>とあるご家庭の、<br>"本当の数字"です。</h2>
+      <p class="intro-p">40代の、共働きのご夫婦。<br>お子さんは2人。<br>収入も、暮らしぶりも、ごくふつう。<br>どこにでもいる、まじめで、がんばっているご家族です。</p>
+      <p class="intro-p big">でも、お金の流れを"全部つなげて"みたとき——<br>私たちは、言葉を失いました。</p>
+
+      <div class="stat-grid">
+        <div class="stat rose">
+          <div class="lb">① 毎月の家計</div>
+          <div class="num">▲16.9<small>万円</small></div>
+          <div class="cap">実は、毎月これだけ静かに赤字。<br>ご本人も、気づいていませんでした。</div>
+          <div class="view"><span class="v-ic">💬</span><span class="v-tx"><b>森川の見立て</b>ボーナスで補填して、なんとかトントン。<br>でも、それは"ボーナス頼みの綱渡り"です。<br>ボーナスが減った瞬間、家計は崩れます。</span></div>
+        </div>
+        <div class="stat amber">
+          <div class="lb">② 老後の資産</div>
+          <div class="num">91<small>歳で底をつく</small></div>
+          <div class="cap">60歳で約2,685万円まで増える資産が、<br>そのあと静かに減り、91歳でゼロに。</div>
+          <div class="view"><span class="v-ic">💬</span><span class="v-tx"><b>森川の見立て</b>しかもこれ、"物価が今のまま"という前提の話。<br>物価は、これからも上がり続ける見通しです。<br>現実には、もっと早く底をつきます。</span></div>
+        </div>
+        <div class="stat rose">
+          <div class="lb">③ もしもの備え</div>
+          <div class="num">▲約7,000<small>万円</small></div>
+          <div class="cap">万一、大黒柱に何かあったら。<br>残された家族に、これだけ足りません。</div>
+          <div class="view"><span class="v-ic">💬</span><span class="v-tx"><b>森川の見立て</b>「入っているつもり」の保険が、まるで足りていない。<br>これが、いちばん怖い。</span></div>
+        </div>
+      </div>
+
+      <div class="graph-card">
+        <div class="gt">資産推移シミュレーション（現状のまま）</div>
+        <div class="gs">40歳〜100歳。今の家計を、そのまま続けたら。</div>
+        <svg viewBox="0 0 520 300" width="100%" role="img" aria-label="資産推移グラフ">
+          <line x1="52" y1="28" x2="52" y2="235" stroke="#e5e7eb" stroke-width="1.5"/>
+          <line x1="52" y1="150" x2="505" y2="150" stroke="#e5e7eb" stroke-width="1.2"/>
+          <line x1="52" y1="90" x2="505" y2="90" stroke="#f1f5f9" stroke-width="1"/>
+          <text x="46" y="154" text-anchor="end" font-size="10.5" fill="#9ca3af">0</text>
+          <text x="46" y="94" text-anchor="end" font-size="10.5" fill="#9ca3af">2,000万</text>
+          <!-- above-zero area (teal) -->
+          <path d="M52,132 C120,124 165,120 215,95 C255,74 285,52 300,50 C330,58 360,78 405,110 C440,135 470,148 488,150 L488,150 L52,150 Z" fill="rgba(13,148,136,.12)"/>
+          <!-- below-zero area (rose) -->
+          <path d="M488,150 C495,158 500,168 505,182 L505,150 L488,150 Z" fill="rgba(225,29,72,.12)"/>
+          <!-- main line -->
+          <path d="M52,132 C120,124 165,120 215,95 C255,74 285,52 300,50 C330,58 360,78 405,110 C440,135 470,148 488,150 C495,158 500,168 505,182" fill="none" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- peak marker -->
+          <circle cx="300" cy="50" r="5.5" fill="#0d9488"/>
+          <text x="300" y="40" text-anchor="middle" font-size="11" fill="#0f766e" font-weight="800">60歳 約2,685万</text>
+          <!-- zero-cross marker -->
+          <circle cx="488" cy="150" r="5.5" fill="#e11d48"/>
+          <text x="486" y="172" text-anchor="end" font-size="11.5" fill="#e11d48" font-weight="800">91歳、貯金がゼロに</text>
+          <text x="52" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">40歳</text>
+          <text x="300" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">65歳</text>
+          <text x="505" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">100歳</text>
+        </svg>
+        <div class="g-legend">
+          <span><i class="dot" style="background:#0d9488;"></i>資産あり</span>
+          <span><i class="dot" style="background:#e11d48;"></i>資産マイナス（不足）</span>
+        </div>
+        <p class="g-note">※ 実際のシミュレーション例をもとにした図です。給与・教育費・住宅・保険・年金などから精密に算出します。</p>
+      </div>
+
+      <p class="bridge-line">——これ全部、<br><span class="hl" style="color:#7dd3c1;">たった1回のシミュレーション</span>で見えたことです。<br><span class="sm">給与も、教育費も、住宅も、保険も、年金も、老後の物価も。<br>ぜんぶ数字にして、初めて"本当のこと"が見えました。<br>無料の相談では、ここまで教えてくれません。</span></p>
+
+      <p class="punch">でも、これは絶望の話じゃない。<br><span class="hl">"見えた"なら、まだ間に合う。</span><br>それが、この数字が教えてくれたことでした。</p>
+    </div>
+  </section>
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="sec intro" id="intro">
+    <div class="wrap">
+      <div class="kicker">だから、あなたに相談です</div>
+      <p>突然のお願い、すみません。<br>少しだけ、相談に乗ってもらえたら嬉しいです。</p>
+      <p>無料の相談に行っても、結局は保険の話で終わってしまう。<br>本当に知りたいのは、そこじゃないのに——。<br>さっきのような"現実"は、教えてもらえないままです。</p>
+      <div class="manifesto">
+        <p>だから、決めました。<br><strong>"その場かぎり"のアドバイスは、もう終わりにしよう</strong>、と。</p>
+        <p>保険を売るために、数字を見るんじゃない。<br>あなたの人生のために、数字を使う。</p>
+        <p>給与も、教育費も、住宅も、老後も。<br>ぜんぶをつなげて、<strong>たった1枚の"地図"</strong>にする。<br>そして半年に一度、隣に座って、一緒に見直す。</p>
+        <p class="big">言うなれば、あなた専属の「お金の参謀」。<br>そんな相談サービスを、いま本気で作っています。</p>
+      </div>
+      <p>ただ、作る側の思い込みだけで進めたくない。<br>だから、実際にお金と向き合っているあなたの"生の感覚"を聞かせてほしいんです。</p>
+      <p>質問は<strong>5つだけ。</strong><br>知識は、いりません。<br>いまのありのままで選んでもらえれば大丈夫です。</p>
+      <p class="sign">あなたの声が、このサービスをまっとうなものにしてくれます。<br>どうか、力を貸してください。</p>
+    </div>
+  </section>
+
+  <!-- ===================== MAP (service) ===================== -->
+  <section class="sec map">
+    <div class="wrap">
+      <div class="kicker">新サービスで、あなたが手にするもの</div>
+      <h2>あなたの人生ぜんぶが、<br><em>1冊の"設計図"になります。</em></h2>
+
+      <p class="flow-label">① まず、あなたのことを、とことん伺います。</p>
+      <div class="hearing">
+        <div class="h-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></span><span class="tx">収入・年金</span></div>
+        <div class="h-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg></span><span class="tx">教育費</span></div>
+        <div class="h-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-8h6v8"/></svg></span><span class="tx">住まい</span></div>
+        <div class="h-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span><span class="tx">保険</span></div>
+        <div class="h-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/><path d="M20 8h-4M20 8v4"/></svg></span><span class="tx">投資・資産</span></div>
+        <div class="h-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1Z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><span class="tx">毎月の支出</span></div>
+        <div class="h-item" style="grid-column:1 / -1;"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 17h14M6.5 17 5 11.5A2 2 0 0 1 6.9 9h10.2a2 2 0 0 1 1.9 2.5L17.5 17"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg></span><span class="tx">車・旅行などのライフイベント</span></div>
+      </div>
+
+      <p class="flow-label">たとえば——ここまで、細かく。<br><span>（実際にお伺いする項目の一部です）</span></p>
+      <div class="doc-gallery">
+        <div class="doc-item">
+          <div class="shot"><img src="images/doc-kyoiku-04.png" alt="教育費のヒアリング"></div>
+          <div class="d-cap"><span class="no">A</span><span><span class="t">お子さんの教育費</span><span class="s">中学・高校・大学、そして塾まで。おひとりずつ、学年ごとに積み上げます。（この例では2人で1,562万円）</span></span></div>
+        </div>
+        <div class="doc-item">
+          <div class="shot"><img src="images/doc-shishutsu-08.png" alt="毎月の支出のヒアリング"></div>
+          <div class="d-cap"><span class="no">B</span><span><span class="t">毎月の生活費</span><span class="s">食費・光熱費・通信費・交際費…。費目ごとに、1円単位で洗い出します。</span></span></div>
+        </div>
+        <div class="doc-item">
+          <div class="shot"><img src="images/doc-event-09.png" alt="ライフイベントのヒアリング"></div>
+          <div class="d-cap"><span class="no">C</span><span><span class="t">これからのライフイベント</span><span class="s">車の買い替え、家族旅行、実家のリフォーム。人生の"大きな出費"も、先に地図に描きます。</span></span></div>
+        </div>
+      </div>
+
+      <div class="arrow">▼</div>
+
+      <p class="flow-label">② そのすべてが、こんな"設計図"に。<br><span>（実際にお渡しする分析書サンプルの一部です）</span></p>
+      <div class="doc-gallery">
+        <div class="doc-item">
+          <div class="shot"><img src="images/doc-suii-12.png" alt="資産推移シミュレーション"></div>
+          <div class="d-cap"><span class="no">1</span><span><span class="t">100歳までの資産推移</span><span class="s">いつ、いくら貯まって、いつ減り始めるか。人生の"お金の地形"が丸ごと見えます。</span></span></div>
+        </div>
+        <div class="doc-item">
+          <div class="shot"><img src="images/doc-cfgraph-15.png" alt="収支の内訳グラフ"></div>
+          <div class="d-cap"><span class="no">2</span><span><span class="t">何にいくら使うか、一生分を色分けで</span><span class="s">生活費・教育費・保険・住宅・イベント…。支出の中身が、年ごとに積み上がって見えます。</span></span></div>
+        </div>
+        <div class="doc-item">
+          <div class="shot"><img src="images/doc-cf-13.png" alt="キャッシュフロー表"></div>
+          <div class="d-cap"><span class="no">3</span><span><span class="t">1年ごとの家計、その数60年分</span><span class="s">収入も、支出も、資産残高も。1歳きざみで、ぜんぶ数字にします。</span></span></div>
+        </div>
+        <div class="doc-item">
+          <div class="shot"><img src="images/doc-hosho-20.png" alt="必要保障額の分析"></div>
+          <div class="d-cap"><span class="no">4</span><span><span class="t">万一の保障、その過不足まで</span><span class="s">"もしも"のとき、いくら足りないのか。ハッキリ数字で突き止めます。</span></span></div>
+        </div>
+      </div>
+
+      <div class="volume">
+        <span class="big">これで、<em>全44</em>ページ。</span>
+        <span class="sub">あなただけの、お金の設計図です。</span>
+      </div>
+
+      <p class="map-note">でも——"設計図ができた"は、<br>まだ、半分です。<br><strong>本当の勝負は、ここからでした。</strong></p>
+    </div>
+  </section>
+
+  <!-- ===================== IMPROVE / ACCOMPANY ===================== -->
+  <section class="sec improve">
+    <div class="wrap">
+      <div class="kicker">見えた"あと"が、本番です</div>
+      <h2>"見える"は、ゴールじゃない。<br><em>ここから、一緒に変えていきます。</em></h2>
+
+      <p class="part-label">③ まず、この設計図を"こう"改善します。<br><span>あなたの数字に合わせた、具体的な打ち手を。</span></p>
+      <div class="step-list">
+        <div class="step">
+          <span class="n">1</span>
+          <div><div class="t">家計のムダを、そぎ落とす</div><div class="s">気づかないうちに、増えていく固定費・保険。<br>ひとつずつ見直して、<b>毎月の赤字を、黒字に</b>変えます。</div></div>
+        </div>
+        <div class="step">
+          <span class="n">2</span>
+          <div><div class="t">眠っているお金に、働いてもらう</div><div class="s">利回り0.2%の預金で、眠ったまま。<br>それは、もったいない。<br><b>新NISAやiDeCo</b>で、"増える仕組み"をつくります。</div></div>
+        </div>
+        <div class="step">
+          <span class="n">3</span>
+          <div><div class="t">もしもの備えを、ちょうどよく</div><div class="s">足りない保障は、足す。ムダな保障は、削る。<br><b>"入りすぎ"も"不足"も</b>、なくします。</div></div>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <div class="bt">同じ家計でも、打ち手ひとつで——</div>
+        <div class="bs">現状のまま vs 見直したあと</div>
+        <svg viewBox="0 0 520 300" width="100%" role="img" aria-label="改善前後の資産推移">
+          <line x1="52" y1="28" x2="52" y2="235" stroke="#d1d5db" stroke-width="1.5"/>
+          <line x1="52" y1="150" x2="505" y2="150" stroke="#d1d5db" stroke-width="1.2"/>
+          <text x="46" y="154" text-anchor="end" font-size="10.5" fill="#9ca3af">0</text>
+          <!-- After area -->
+          <path d="M52,128 C150,108 240,78 300,52 C360,72 420,92 505,108 L505,150 L52,150 Z" fill="rgba(13,148,136,.12)"/>
+          <!-- Before (rose dashed) -->
+          <path d="M52,132 C160,124 245,118 300,52 C345,80 400,120 488,150 C495,158 500,168 505,182" fill="none" stroke="#e11d48" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
+          <!-- After (teal solid) -->
+          <path d="M52,128 C150,108 240,78 300,52 C360,72 420,92 505,108" fill="none" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- markers -->
+          <circle cx="488" cy="150" r="5" fill="#e11d48"/>
+          <text x="486" y="170" text-anchor="end" font-size="11" fill="#e11d48" font-weight="800">91歳でゼロ</text>
+          <circle cx="505" cy="108" r="5" fill="#0d9488"/>
+          <text x="505" y="98" text-anchor="end" font-size="11" fill="#0f766e" font-weight="800">100歳でも、まだ余裕</text>
+          <text x="52" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">40歳</text>
+          <text x="505" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">100歳</text>
+        </svg>
+        <div class="ba-legend">
+          <span><i class="dot" style="background:#e11d48;"></i>現状のまま</span>
+          <span><i class="dot" style="background:#0d9488;"></i>見直したあと</span>
+        </div>
+        <p class="ba-note">※ 改善効果のイメージ図です。打ち手の内容・効果は、お一人おひとりの状況によって変わります。</p>
+      </div>
+
+      <p class="mid-line">たった数字を、変えるだけ。<br><span class="hl">それだけで、未来の景色が変わります。</span></p>
+
+      <p class="part-label">④ そして、ずっと隣で。<br><span>一度きりにしない。だから、変わっていける。</span></p>
+      <div class="timeline">
+        <div class="tl">
+          <span class="dot">1</span>
+          <div class="tsub">はじめまして</div>
+          <div class="tt">徹底ヒアリング＆"設計図"づくり</div>
+          <div class="ts">あなたの人生を、まるごと1枚に。現在地を、はっきりさせます。</div>
+        </div>
+        <div class="tl">
+          <span class="dot">2</span>
+          <div class="tsub">数ヶ月後</div>
+          <div class="tt">改善プランを、一緒に実行</div>
+          <div class="ts">家計・投資・保険。何から手をつけるか、順番まで一緒に決めて、動きます。</div>
+        </div>
+        <div class="tl">
+          <span class="dot">3</span>
+          <div class="tsub">半年〜1年ごと</div>
+          <div class="tt">"作戦会議"で、軌道修正</div>
+          <div class="ts">計画どおり進んでる？ズレてない？隣に座って、一緒に確かめます。</div>
+        </div>
+        <div class="tl">
+          <span class="dot">4</span>
+          <div class="tsub">人生の節目ごと</div>
+          <div class="tt">変化のたびに、地図を描き直す</div>
+          <div class="ts">転職、出産、住宅購入。暮らしが変われば、お金の地図も変わります。そのたびに、また一緒に。</div>
+        </div>
+      </div>
+
+      <p class="close-line">お金の悩みは、<br>一生、ついてまわります。<br><span class="hl">だからこそ——一生、隣にいます。</span></p>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST (gallery) ===================== -->
+  <section class="sec trust">
+    <div class="wrap">
+      <div class="kicker">これまでの、学びの現場</div>
+      <h2>お金の不安と向き合う人が、<br><em>もう、たくさん集まっています。</em></h2>
+      <div class="gal">
+        <figure class="wide"><img src="images/group.jpg" alt="勉強会の集合写真"></figure>
+        <figure><img src="images/talk.jpg" alt="少人数での相談"></figure>
+        <figure><img src="images/outdoor.jpg" alt="仲間との時間"></figure>
+      </div>
+      <p class="t-lead">ここにいるのは、特別な方じゃありません。<br>「このままでいいのかな」と、ふと立ち止まった、<br><strong>あなたと同じ、普通の方たち</strong>です。</p>
+    </div>
+  </section>
+
+  <!-- ===================== WHO (Morikawa) ===================== -->
+  <section class="sec who">
+    <div class="wrap">
+      <div class="who-photo"><img src="images/morikawa.jpg" alt="森川 満章"></div>
+      <div class="nm">森川 満章</div>
+      <div class="role">このサービスを、直接あなたと。</div>
+      <p class="msg">
+        お金の不安は、<br>金額の問題じゃありません。<br><span class="hl">"見えていない"という問題</span>です。<br><br>
+        見えさえすれば、<br>たいていのことは、何とかなる。<br>そして、<span class="hl">何とかできる。</span><br><br>
+        あなたの声を、力にさせてください。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== START ===================== -->
+  <section class="start-sec">
+    <div class="wrap">
+      <button class="cta-start" onclick="startQuiz()">
+        アンケートに答える（約90秒）
+        <span class="sub">▶ 全5問・選ぶだけ・知識いりません</span>
+      </button>
+      <p class="note">※ すでに「ユメカネサロン」の方も、そのままご参加ください。</p>
+    </div>
+  </section>
+
+  <!-- ===================== QUIZ ===================== -->
+  <section class="quiz" id="quiz">
+    <div class="wrap">
+      <div class="progress-head">
+        <span class="step" id="stepLabel">質問 1 / 5</span>
+        <span class="pct" id="pctLabel">20%</span>
+      </div>
+      <div class="bar"><i id="barFill"></i></div>
+      <p class="bridge" id="bridge"></p>
+      <h2 class="q-title" id="qTitle"></h2>
+      <p class="q-sub" id="qSub"></p>
+      <div class="opts" id="opts"></div>
+      <button class="back" id="backBtn" onclick="prevQ()">← ひとつ前にもどる</button>
+    </div>
+  </section>
+
+  <!-- ===================== RESULT ===================== -->
+  <section class="result" id="result">
+    <div class="wrap">
+      <div class="thanks-em">🙏</div>
+      <h2>貴重なご意見、<br>本当にありがとうございました。</h2>
+      <p class="r-lead">あなたの5つの回答、めちゃくちゃ参考になります。<br>心から感謝します。</p>
+      <div class="r-photo"><img src="images/outdoor.jpg" alt="ありがとうございます"></div>
+      <p class="r-lead">——ここからは、協力してくれた<strong>あなたへの"お礼"</strong>の話です。</p>
+
+      <div class="gift-card">
+        <div class="gt">🎁 ご協力のお礼（先行モニター特典）</div>
+        <ul>
+          <li><span class="ck">✓</span>あなたの回答から見えた「お金の現在地」レポート</li>
+          <li><span class="ck">✓</span>今日から動ける改善ロードマップ 3ステップ</li>
+          <li><span class="ck">✓</span>【1枚でわかる】資産推移シミュレーションのサンプル</li>
+          <li><span class="ck">✓</span>無料相談では"聞けないこと"リスト</li>
+          <li class="star"><span class="ck">🌟</span>準備中の新サービスの先行ご案内</li>
+        </ul>
+      </div>
+
+      <a href="#" class="cta-line" id="lineBtn"><span class="li-ico">💬</span>LINEでお礼を受け取る</a>
+      <p class="promise">協力してくれたあなたへのお礼なので、すべて無料です。<br>しつこい売り込みは一切しません。<br>約束します。</p>
+    </div>
+  </section>
+
+  <footer><div class="wrap"><p>© お金の相談サービス（準備中）</p></div></footer>
+
+<script>
+  const QUESTIONS = [
+    { bridge:"まず、いちばん素朴なところから。",
+      title:"あなたは今、“何歳まで”のお金の見通しを立てていますか？", sub:"直感で大丈夫です。",
+      opts:["正直、今月〜来年くらいまで","5年後くらいまではなんとなく","老後（65歳〜）は意識している","100歳まで、年単位で数字にしてある"] },
+    { bridge:"ありがとうございます。すごく参考になります。",
+      title:"もし収入が半年間ゼロになったら、あなたの家計は何ヶ月もちそうですか？", sub:"ざっくりで構いません。",
+      opts:["考えたことがない／分からない","たぶん数ヶ月…？","1年くらいは大丈夫なはず","何ヶ月もつか、金額で即答できる"] },
+    { bridge:"半分まで来ました。あなたの感覚、リアルで助かります。",
+      title:"あなたの投資（NISA・株・投信など）は、“人生のどの支出”のためのものですか？", sub:"いちばん近いものを。",
+      opts:["特に決めていない／なんとなく増やしたい","老後資金のため、と思っている","教育費や住宅など、使う時期を意識している","「いつ・いくら・何のために取り崩すか」まで決めてある"] },
+    { bridge:"あと2問です。",
+      title:"いま入っている保険は、“何を根拠に”その金額になっていますか？", sub:"（保険に入っていない方は、いちばん近い感覚で）",
+      opts:["勧められるまま／なんとなく","周りと同じくらい、で決めた","当時の状況で自分なりに考えた","今の家計と将来設計から逆算して決めている"] },
+    { bridge:"最後の質問です。ここが、サービスの核心にいちばん関わる部分です。",
+      title:"お金のことを、“利害関係のない専門家”と定期的に見直す場を持っていますか？", sub:"率直に教えてください。",
+      opts:["持っていない","銀行や保険の窓口で相談することはある","一度プロに相談したことはある（単発）","半年〜1年ごとに、継続して作戦会議をしている"] }
+  ];
+
+  let cur = 0;
+  const answers = new Array(QUESTIONS.length).fill(null);
+
+  function hideLanding(){
+    ['.fv','.empathy','.reality','#intro','.map','.trust','.who','.start-sec'].forEach(s=>{
+      const el=document.querySelector(s); if(el) el.style.display='none';
+    });
+  }
+
+  function startQuiz(){
+    hideLanding();
+    document.getElementById('quiz').classList.add('active');
+    cur = 0; renderQ();
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+
+  function renderQ(){
+    const q = QUESTIONS[cur], total = QUESTIONS.length;
+    document.getElementById('stepLabel').textContent = `質問 ${cur+1} / ${total}`;
+    document.getElementById('pctLabel').textContent = `${Math.round(((cur+1)/total)*100)}%`;
+    document.getElementById('barFill').style.width = `${((cur+1)/total)*100}%`;
+    document.getElementById('bridge').textContent = q.bridge;
+    document.getElementById('qTitle').textContent = q.title;
+    document.getElementById('qSub').textContent = q.sub;
+    const keys=['A','B','C','D'], box = document.getElementById('opts');
+    box.innerHTML='';
+    q.opts.forEach((txt,i)=>{
+      const b=document.createElement('button');
+      b.className='opt'+(answers[cur]===i?' sel':'');
+      b.innerHTML=`<span class="key">${keys[i]}</span><span>${txt}</span>`;
+      b.onclick=()=>selectOpt(i);
+      box.appendChild(b);
+    });
+    document.getElementById('backBtn').style.visibility = cur===0 ? 'hidden':'visible';
+  }
+
+  function selectOpt(i){
+    answers[cur]=i;
+    document.querySelectorAll('#opts .opt').forEach((el,idx)=>el.classList.toggle('sel', idx===i));
+    setTimeout(()=>{
+      if(cur < QUESTIONS.length-1){ cur++; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); }
+      else{ showResult(); }
+    },260);
+  }
+
+  function prevQ(){ if(cur>0){ cur--; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); } }
+
+  function showResult(){
+    document.getElementById('quiz').classList.remove('active');
+    document.getElementById('result').classList.add('active');
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+
+  // LINE誘導：本番の友だち追加URLに差し替えてください
+  document.getElementById('lineBtn').addEventListener('click',function(e){
+    e.preventDefault();
+    // window.location.href = 'https://lin.ee/xxxxxxx';
+    alert('※ ここに実際のLINE友だち追加URLを設定します。');
+  });
+</script>
+</body>
+</html>
