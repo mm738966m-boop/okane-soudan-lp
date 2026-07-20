@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ご協力のお礼｜4つの特典</title>
+<style>
+  :root{
+    --teal:#0d9488; --teal-d:#0f766e; --teal-l:#5eead4; --teal-bg:#f0fdfa;
+    --ink:#1f2937; --ink-sub:#4b5563; --line:#e5e7eb; --white:#fff;
+    --rose:#e11d48; --amber:#b45309;
+    --shadow:0 10px 30px rgba(13,148,136,.10);
+    --shadow-img:0 16px 40px rgba(15,23,42,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+    color:var(--ink);background:var(--white);line-height:1.95;font-size:16px;letter-spacing:.02em;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:600px;margin:0 auto;padding:0 20px;}
+  img{max-width:100%;display:block;}
+
+  /* FV */
+  .fv{background:linear-gradient(160deg,#0d9488,#0f766e);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden;text-align:center;}
+  .fv::before{content:"";position:absolute;top:-80px;right:-70px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.07);}
+  .fv .wrap{position:relative;z-index:1;}
+  .fv .em{font-size:42px;margin-bottom:10px;}
+  .fv .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);font-size:12.5px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:.08em;margin-bottom:18px;}
+  .fv h1{font-size:25px;font-weight:900;line-height:1.6;margin-bottom:14px;}
+  .fv p{font-size:15px;color:rgba(255,255,255,.94);line-height:1.9;}
+
+  .sec{padding:40px 0 8px;}
+  .gift{border:1px solid var(--line);border-radius:20px;padding:26px 20px;margin-bottom:22px;box-shadow:0 8px 24px rgba(15,23,42,.05);}
+  .gift .head{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px;}
+  .gift .no{flex:0 0 40px;height:40px;border-radius:12px;background:var(--teal);color:#fff;font-size:19px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+  .gift .ttl{font-size:19px;font-weight:900;line-height:1.5;padding-top:2px;}
+  .gift .ttl small{display:block;font-size:12.5px;font-weight:700;color:var(--teal-d);letter-spacing:.04em;margin-bottom:3px;}
+  .gift p{font-size:15px;color:var(--ink-sub);margin-bottom:14px;}
+  .gift p:last-child{margin-bottom:0;}
+  .gift strong{color:var(--teal-d);}
+
+  /* type cards */
+  .qlist{display:flex;flex-direction:column;gap:10px;margin:8px 0 18px;}
+  .q{background:var(--teal-bg);border-radius:12px;padding:13px 15px;font-size:14px;font-weight:600;color:var(--ink);}
+  .q b{color:var(--teal-d);}
+  .types{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  .type{border:1px solid var(--teal-l);border-radius:14px;padding:16px;}
+  .type .tn{font-size:15px;font-weight:900;color:var(--teal-d);margin-bottom:4px;}
+  .type .ts{font-size:13.5px;color:var(--ink-sub);line-height:1.75;}
+  .type .score{font-size:12px;font-weight:700;color:var(--amber);margin-bottom:6px;}
+
+  /* steps */
+  .steps{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+  .step{display:flex;gap:13px;align-items:flex-start;}
+  .step .sn{flex:0 0 30px;height:30px;border-radius:9px;background:var(--teal-bg);color:var(--teal-d);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .st{font-size:15.5px;font-weight:800;margin-bottom:3px;}
+  .step .sd{font-size:14px;color:var(--ink-sub);line-height:1.8;}
+  .step .today{display:inline-block;margin-top:6px;background:#fffbeb;border:1px solid #fcd34d;color:#92400e;font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:8px;line-height:1.6;}
+
+  /* graph */
+  .graph-card{background:var(--teal-bg);border:1.5px solid var(--teal-l);border-radius:16px;padding:20px 16px 16px;margin-top:8px;}
+  .graph-card .gt{font-size:14.5px;font-weight:800;text-align:center;margin-bottom:12px;}
+  .g-legend{display:flex;gap:16px;justify-content:center;font-size:12px;font-weight:700;margin-top:10px;flex-wrap:wrap;}
+  .g-legend span{display:flex;align-items:center;gap:6px;color:var(--ink-sub);}
+  .g-legend .dot{width:11px;height:11px;border-radius:3px;}
+  .g-note{font-size:11.5px;color:#9ca3af;text-align:center;margin-top:10px;line-height:1.7;}
+
+  /* checklist */
+  .checks{display:flex;flex-direction:column;gap:12px;margin-top:6px;}
+  .check{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 15px;}
+  .check .mk{flex:0 0 auto;color:var(--rose);font-weight:900;font-size:16px;margin-top:1px;}
+  .check .ct{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+  .check .cs{font-size:12.5px;color:#9ca3af;margin-top:3px;line-height:1.6;}
+
+  /* closing */
+  .closing{background:#0b504a;color:#fff;padding:44px 0;text-align:center;margin-top:34px;}
+  .closing h2{font-size:20px;font-weight:900;line-height:1.8;margin-bottom:14px;}
+  .closing h2 .hl{color:#7dd3c1;}
+  .closing p{font-size:14.5px;color:rgba(255,255,255,.9);line-height:1.9;}
+  .closing .sign{margin-top:16px;font-weight:800;color:#7dd3c1;}
+  footer{padding:24px 0 40px;text-align:center;}
+  footer p{font-size:12px;color:#9ca3af;}
+  @media(max-width:420px){.fv h1{font-size:22px;}.gift .ttl{font-size:17px;}body{font-size:15px;}}
+</style>
+</head>
+<body>
+
+  <section class="fv">
+    <div class="wrap">
+      <div class="em">🎁</div>
+      <span class="badge">ご協力のお礼</span>
+      <h1>アンケート、<br>本当にありがとうございました。</h1>
+      <p>お礼として、4つのお土産をご用意しました。<br>どれも、今日から役に立つものばかりです。<br>ゆっくり読んでみてください。</p>
+    </div>
+  </section>
+
+  <!-- ① 現在地レポート -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="gift">
+        <div class="head">
+          <span class="no">1</span>
+          <div class="ttl"><small>あなたの回答から見た</small>「お金の現在地」レポート</div>
+        </div>
+        <p>実はあの5つの質問、そのまま<strong>「あなたが今、お金の地図のどこに立っているか」</strong>を測るものでした。<br>それぞれ、何を見ていたのか——種明かしします。</p>
+        <div class="qlist">
+          <div class="q"><b>Q1 何歳までの見通し</b>／どれだけ"先"まで見えているか。多くの人は5年先で止まっています。</div>
+          <div class="q"><b>Q2 収入ゼロで何ヶ月</b>／"守り"の体力。即答できないのは、家計が見えていないサインです。</div>
+          <div class="q"><b>Q3 投資の目的</b>／「増やす」と「使う」がつながっているか。ここが盲点になりがちです。</div>
+          <div class="q"><b>Q4 保険の根拠</b>／"なんとなく"で入っていないか。保険は入口で、ゴールではありません。</div>
+          <div class="q"><b>Q5 定期的な見直し</b>／中立の専門家と、継続して数字を見る場を持っているか。</div>
+        </div>
+        <p>あなたの回答を思い出して、下の3タイプのどれに近いか、当てはめてみてください。</p>
+        <div class="types">
+          <div class="type">
+            <div class="score">Aが多かった方</div>
+            <div class="tn">🌫 霧の中タイプ</div>
+            <div class="ts">まだ、お金の全体像が見えていない状態。でも大丈夫。伸びしろは、いちばん大きいです。まずは"1枚の地図"を持つことから。</div>
+          </div>
+          <div class="type">
+            <div class="score">B・Cが多かった方</div>
+            <div class="tn">🗺 地図の下書きタイプ</div>
+            <div class="ts">意識はできている。あとは、バラバラの情報を"つなげる"だけ。全部を1枚にすると、景色が一変します。</div>
+          </div>
+          <div class="type">
+            <div class="score">Dが多かった方</div>
+            <div class="tn">🎯 あと一歩タイプ</div>
+            <div class="ts">かなり整っています。残るは"継続的な見直し"。半年ごとに数字を確かめれば、不安はほぼ消えます。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ② 改善ロードマップ -->
+      <div class="gift">
+        <div class="head">
+          <span class="no">2</span>
+          <div class="ttl"><small>今日から動ける</small>改善ロードマップ 3ステップ</div>
+        </div>
+        <p>どのタイプの方も、進む道は同じ。<br>この3ステップの順番が、いちばん失敗しません。</p>
+        <div class="steps">
+          <div class="step">
+            <span class="sn">1</span>
+            <div>
+              <div class="st">まず、"見える化"する</div>
+              <div class="sd">収入・支出・資産・保険・将来を、1枚につなげる。順番を飛ばして投資から始めると、たいてい迷子になります。</div>
+              <span class="today">📌 今日できること：ねんきん定期便を見る／毎月の固定費を書き出す</span>
+            </div>
+          </div>
+          <div class="step">
+            <span class="sn">2</span>
+            <div>
+              <div class="st">ムリ・ムダを、そぎ落とす</div>
+              <div class="sd">気づかないうちに増えた固定費・保険を見直して、毎月の"隠れ赤字"を黒字に変える。ここで家計の体力が戻ります。</div>
+              <span class="today">📌 今日できること：サブスク・保険料を一覧にして"要る/要らない"を仕分け</span>
+            </div>
+          </div>
+          <div class="step">
+            <span class="sn">3</span>
+            <div>
+              <div class="st">お金に、働いてもらう</div>
+              <div class="sd">利回り0.2%の預金で眠らせたままは、もったいない。新NISAやiDeCoで、"増える仕組み"をつくる。ただし①②のあとで。</div>
+              <span class="today">📌 今日できること：新NISAの口座があるか確認する</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ③ 資産推移サンプル -->
+      <div class="gift">
+        <div class="head">
+          <span class="no">3</span>
+          <div class="ttl"><small>1枚でわかる</small>資産推移シミュレーションのサンプル</div>
+        </div>
+        <p>本格的な相談では、あなたの数字で<strong>こんなグラフ</strong>を作ります。<br>「いつ・いくら貯まって、いつ減り始めるか」が、1枚で見えます。</p>
+        <div class="graph-card">
+          <div class="gt">現状のまま vs 見直したあと（サンプル）</div>
+          <svg viewBox="0 0 520 300" width="100%" role="img" aria-label="資産推移サンプル">
+            <line x1="52" y1="28" x2="52" y2="235" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="52" y1="150" x2="505" y2="150" stroke="#d1d5db" stroke-width="1.2"/>
+            <text x="46" y="154" text-anchor="end" font-size="10.5" fill="#9ca3af">0</text>
+            <path d="M52,128 C150,108 240,78 300,52 C360,72 420,92 505,108 L505,150 L52,150 Z" fill="rgba(13,148,136,.12)"/>
+            <path d="M52,132 C160,124 245,118 300,52 C345,80 400,120 488,150 C495,158 500,168 505,182" fill="none" stroke="#e11d48" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
+            <path d="M52,128 C150,108 240,78 300,52 C360,72 420,92 505,108" fill="none" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="488" cy="150" r="5" fill="#e11d48"/>
+            <text x="486" y="170" text-anchor="end" font-size="11" fill="#e11d48" font-weight="800">このままだと、いつか底をつく</text>
+            <circle cx="505" cy="108" r="5" fill="#0d9488"/>
+            <text x="505" y="98" text-anchor="end" font-size="11" fill="#0f766e" font-weight="800">見直すと、ずっと安心</text>
+            <text x="52" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">今</text>
+            <text x="505" y="255" text-anchor="middle" font-size="10.5" fill="#9ca3af">100歳</text>
+          </svg>
+          <div class="g-legend">
+            <span><i class="dot" style="background:#e11d48;"></i>現状のまま</span>
+            <span><i class="dot" style="background:#0d9488;"></i>見直したあと</span>
+          </div>
+          <p class="g-note">※ サンプルのイメージ図です。実際は、あなたの給与・教育費・住宅・保険・年金・物価などから精密に作ります。</p>
+        </div>
+      </div>
+
+      <!-- ④ 聞けないことリスト -->
+      <div class="gift">
+        <div class="head">
+          <span class="no">4</span>
+          <div class="ttl"><small>お金のプロにも</small>"聞けないこと"リスト</div>
+        </div>
+        <p>銀行・保険の窓口や、無料相談では——<br>実は、<strong>いちばん知りたいことほど、答えが返ってこない</strong>んです。<br>なぜなら、その質問は"商品を売る立場"では答えにくいから。</p>
+        <div class="checks">
+          <div class="check"><span class="mk">?</span><div><div class="ct">「結局、私は何歳まで働けば安心ですか？」</div><div class="cs">人生全体を数字にしないと、誰も答えられません。</div></div></div>
+          <div class="check"><span class="mk">?</span><div><div class="ct">「この保険、我が家に本当に必要ですか？」</div><div class="cs">売る側に聞いても、"必要です"としか返ってきません。</div></div></div>
+          <div class="check"><span class="mk">?</span><div><div class="ct">「NISAは満額やるべき？うちの場合は？」</div><div class="cs">正解は人それぞれ。家計とセットでしか決められません。</div></div></div>
+          <div class="check"><span class="mk">?</span><div><div class="ct">「教育費と老後資金、どっちを優先？」</div><div class="cs">両方の"つながり"を見ないと、判断を誤ります。</div></div></div>
+          <div class="check"><span class="mk">?</span><div><div class="ct">「今の家計を続けたら、何歳で詰みますか？」</div><div class="cs">いちばん怖くて、いちばん大事な質問です。</div></div></div>
+        </div>
+        <p style="margin-top:16px;">これらに正直に答えられるのは、<strong>商品を売らない、中立の立場</strong>だけ。<br>——それが、本格的な相談の存在意義です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <h2>お金の不安は、金額じゃなくて<br><span class="hl">"見えていない"という問題</span>です。</h2>
+      <p>見えさえすれば、たいていのことは何とかなる。<br>そして、何とかできます。<br><br>この4つが、あなたの"最初の一歩"になれば嬉しいです。<br>準備中の新サービスのことも、LINEで少しずつお話ししますね。</p>
+      <p class="sign">— 森川 満章</p>
+    </div>
+  </section>
+
+  <footer><div class="wrap"><p>© お金の相談サービス（準備中）</p></div></footer>
+</body>
+</html>
