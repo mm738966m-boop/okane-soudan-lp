@@ -598,9 +598,8 @@
       <div class="opts" id="opts"></div>
       <div class="name-box" id="nameBox" style="display:none;">
         <input type="text" id="nameInput" placeholder="例：もりかわ / まっちゃん" maxlength="20" autocomplete="off">
-        <p class="hint">ニックネームでも、下のお名前だけでも大丈夫です。<br>あなたの声として、大切に受け取らせてください。</p>
         <button class="cta-name" onclick="submitName()">回答を送る</button>
-        <button class="skip" onclick="submitName(true)">名前を入れずに送る</button>
+        <button class="skip" onclick="submitName(true)">名前は入れずに送る</button>
       </div>
       <button class="back" id="backBtn" onclick="prevQ()">← ひとつ前にもどる</button>
     </div>
@@ -699,9 +698,10 @@
 
   function renderQ(){
     const q = QUESTIONS[cur], total = QUESTIONS.length;
-    document.getElementById('stepLabel').textContent = `質問 ${cur+1} / ${total}`;
-    document.getElementById('pctLabel').textContent = `${Math.round(((cur+1)/total)*100)}%`;
-    document.getElementById('barFill').style.width = `${((cur+1)/total)*100}%`;
+    const shown = total + 1; // 最後のお名前を含めて全6問として表示
+    document.getElementById('stepLabel').textContent = `質問 ${cur+1} / ${shown}`;
+    document.getElementById('pctLabel').textContent = `${Math.round(((cur+1)/shown)*100)}%`;
+    document.getElementById('barFill').style.width = `${((cur+1)/shown)*100}%`;
     document.getElementById('bridge').textContent = q.bridge;
     document.getElementById('qTitle').textContent = q.title;
     document.getElementById('qSub').textContent = q.sub;
@@ -726,14 +726,14 @@
     },260);
   }
 
-  // 5問すべて答えたあと、お名前をうかがう
+  // 6問目として、さらっとお名前をうかがう
   function askName(){
     document.getElementById('opts').style.display='none';
     document.getElementById('backBtn').style.display='none';
-    document.getElementById('bridge').textContent = 'ありがとうございました。最後にひとつだけ。';
-    document.getElementById('qTitle').textContent = 'お名前（ニックネーム）を教えてください。';
-    document.getElementById('qSub').textContent = '「どなたの声か」が分かると、とても嬉しいです。';
-    document.getElementById('stepLabel').textContent = '回答ありがとうございました';
+    document.getElementById('bridge').textContent = 'これで最後です。';
+    document.getElementById('qTitle').textContent = 'よければ、お名前を教えてください。';
+    document.getElementById('qSub').textContent = 'ニックネームで大丈夫です。';
+    document.getElementById('stepLabel').textContent = '質問 6 / 6';
     document.getElementById('pctLabel').textContent = '100%';
     document.getElementById('barFill').style.width = '100%';
     document.getElementById('nameBox').style.display='block';
