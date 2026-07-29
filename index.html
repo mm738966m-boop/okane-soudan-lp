@@ -198,6 +198,19 @@
   .opt.sel .key{background:var(--teal);color:#fff;}
   .back{background:none;border:none;color:#9ca3af;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-top:22px;padding:6px;}
   .back:hover{color:var(--teal-d);}
+  .name-box{margin-top:4px;}
+  .name-box input{width:100%;font-family:inherit;font-size:16.5px;font-weight:600;color:var(--ink);
+    border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff;outline:none;transition:border-color .2s ease;}
+  .name-box input:focus{border-color:var(--teal);box-shadow:0 4px 14px rgba(13,148,136,.12);}
+  .name-box input::placeholder{color:#c7cdd4;font-weight:500;}
+  .name-box .hint{font-size:12.5px;color:#9ca3af;margin-top:10px;line-height:1.7;}
+  .name-box .cta-name{display:block;width:100%;background:var(--teal);color:#fff;border:none;font-family:inherit;
+    font-size:17px;font-weight:800;padding:18px;border-radius:14px;cursor:pointer;margin-top:16px;
+    box-shadow:var(--shadow);transition:background .2s ease,transform .15s ease;letter-spacing:.03em;}
+  .name-box .cta-name:hover{background:var(--teal-d);transform:translateY(-2px);}
+  .name-box .skip{display:block;width:100%;background:none;border:none;color:#9ca3af;font-family:inherit;
+    font-size:13px;font-weight:600;cursor:pointer;margin-top:14px;padding:6px;}
+  .name-box .skip:hover{color:var(--teal-d);}
 
   /* ===== result ===== */
   .result{padding:48px 0 60px;display:none;}
@@ -583,6 +596,12 @@
       <h2 class="q-title" id="qTitle"></h2>
       <p class="q-sub" id="qSub"></p>
       <div class="opts" id="opts"></div>
+      <div class="name-box" id="nameBox" style="display:none;">
+        <input type="text" id="nameInput" placeholder="例：もりかわ / まっちゃん" maxlength="20" autocomplete="off">
+        <p class="hint">ニックネームでも、下のお名前だけでも大丈夫です。<br>あなたの声として、大切に受け取らせてください。</p>
+        <button class="cta-name" onclick="submitName()">回答を送る</button>
+        <button class="skip" onclick="submitName(true)">名前を入れずに送る</button>
+      </div>
       <button class="back" id="backBtn" onclick="prevQ()">← ひとつ前にもどる</button>
     </div>
   </section>
@@ -593,7 +612,6 @@
       <div class="thanks-em">🙏</div>
       <h2>貴重なご意見、<br>本当にありがとうございました。</h2>
       <p class="r-lead">あなたの5つの回答、たしかに受け取りました。<br>めちゃくちゃ参考になります。<br>心から感謝します。</p>
-      <div class="r-photo"><img src="images/group.jpg" alt="お金の勉強会に集まった方たち"></div>
       <p class="r-lead">——さて。<br>ここからは、協力してくれた<strong>あなたへの"お礼"</strong>の話です。</p>
 
       <div class="gift-card">
@@ -635,6 +653,7 @@
   ];
 
   let cur = 0;
+  let respondentName = '';
   const answers = new Array(QUESTIONS.length).fill(null);
 
   // ===== 回答をスプレッドシートへ送信 =====
@@ -648,6 +667,7 @@
       const type = score <= 10 ? '霧の中タイプ' : (score <= 15 ? '地図の下書きタイプ' : 'あと一歩タイプ');
       const ref = new URLSearchParams(location.search).get('ref') || '';
       const payload = {
+        name: respondentName,
         q1: answers[0]!==null ? QUESTIONS[0].opts[answers[0]] : '',
         q2: answers[1]!==null ? QUESTIONS[1].opts[answers[1]] : '',
         q3: answers[2]!==null ? QUESTIONS[2].opts[answers[2]] : '',
@@ -702,8 +722,27 @@
     document.querySelectorAll('#opts .opt').forEach((el,idx)=>el.classList.toggle('sel', idx===i));
     setTimeout(()=>{
       if(cur < QUESTIONS.length-1){ cur++; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); }
-      else{ showResult(); }
+      else{ askName(); }
     },260);
+  }
+
+  // 5問すべて答えたあと、お名前をうかがう
+  function askName(){
+    document.getElementById('opts').style.display='none';
+    document.getElementById('backBtn').style.display='none';
+    document.getElementById('bridge').textContent = 'ありがとうございました。最後にひとつだけ。';
+    document.getElementById('qTitle').textContent = 'お名前（ニックネーム）を教えてください。';
+    document.getElementById('qSub').textContent = '「どなたの声か」が分かると、とても嬉しいです。';
+    document.getElementById('stepLabel').textContent = '回答ありがとうございました';
+    document.getElementById('pctLabel').textContent = '100%';
+    document.getElementById('barFill').style.width = '100%';
+    document.getElementById('nameBox').style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function submitName(skip){
+    respondentName = skip ? '' : (document.getElementById('nameInput').value || '').trim();
+    showResult();
   }
 
   function prevQ(){ if(cur>0){ cur--; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); } }
