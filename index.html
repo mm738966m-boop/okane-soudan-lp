@@ -636,6 +636,33 @@
   let cur = 0;
   const answers = new Array(QUESTIONS.length).fill(null);
 
+  // ===== 回答をスプレッドシートへ送信 =====
+  // ↓ GASのウェブアプリURLをここに設定すると、回答が自動保存されます
+  const SURVEY_ENDPOINT = '';
+
+  function sendAnswers(){
+    if(!SURVEY_ENDPOINT) return; // 未設定なら何もしない（LPは正常に動く）
+    try{
+      const score = answers.reduce((s,v)=> s + (v===null?0:v+1), 0);
+      const type = score <= 10 ? '霧の中タイプ' : (score <= 15 ? '地図の下書きタイプ' : 'あと一歩タイプ');
+      const ref = new URLSearchParams(location.search).get('ref') || '';
+      const payload = {
+        q1: answers[0]!==null ? QUESTIONS[0].opts[answers[0]] : '',
+        q2: answers[1]!==null ? QUESTIONS[1].opts[answers[1]] : '',
+        q3: answers[2]!==null ? QUESTIONS[2].opts[answers[2]] : '',
+        q4: answers[3]!==null ? QUESTIONS[3].opts[answers[3]] : '',
+        q5: answers[4]!==null ? QUESTIONS[4].opts[answers[4]] : '',
+        score: score, type: type, ref: ref
+      };
+      // no-corsで送信（画面遷移をブロックしない）
+      fetch(SURVEY_ENDPOINT, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify(payload)
+      }).catch(()=>{});
+    }catch(e){}
+  }
+
   function hideLanding(){
     ['.fv','.empathy','.reality','#intro','.map','.improve','.trust','.who','.start-sec'].forEach(s=>{
       const el=document.querySelector(s); if(el) el.style.display='none';
@@ -681,6 +708,7 @@
   function prevQ(){ if(cur>0){ cur--; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); } }
 
   function showResult(){
+    sendAnswers(); // LINE登録の前に、回答を保存（登録しない人の声も残す）
     document.getElementById('quiz').classList.remove('active');
     document.getElementById('result').classList.add('active');
     window.scrollTo({top:0,behavior:'instant'});
