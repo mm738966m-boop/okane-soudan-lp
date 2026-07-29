@@ -5,5 +5,10 @@
 # 未使用の生成画像
 images/doc-dash-10.png
 
+# 内部設計資料（公開しない）
+LINEステップ配信_設計書.md
+UTAGE実装_完全手順書.md
+richmenu/
+
 # システムファイル
 .DS_Store
