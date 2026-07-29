@@ -639,7 +639,7 @@
 
   // ===== 回答をスプレッドシートへ送信 =====
   // ↓ GASのウェブアプリURLをここに設定すると、回答が自動保存されます
-  const SURVEY_ENDPOINT = '';
+  const SURVEY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwuhtSSaxY324e9QkVeKDYn7gw5pqYEZfmkgOG_q0GQRN8VwHSMjPZFguT74MftQcKEjg/exec';
 
   function sendAnswers(){
     if(!SURVEY_ENDPOINT) return; // 未設定なら何もしない（LPは正常に動く）
